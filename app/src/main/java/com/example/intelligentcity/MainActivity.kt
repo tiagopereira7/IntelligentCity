@@ -1,8 +1,9 @@
 package com.example.intelligentcity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {}
-    fun registar_Utilizador(view: View) {}
+    fun registar_Utilizador(view: View) {
+        val newActivityIntent = Intent(this, RegistarActivity::class.java)
+        startActivity(newActivityIntent)
+    }
     fun consultar(view: View) {}
 }
