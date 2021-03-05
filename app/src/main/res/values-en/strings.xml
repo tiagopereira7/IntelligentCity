@@ -11,4 +11,5 @@
     <string name="data_nasc">Birth Date</string>
     <string name="morada">Adress</string>
     <string name="iniciar_sessao">Sign in</string>
+    <string name="registar">Register</string>
 </resources>
