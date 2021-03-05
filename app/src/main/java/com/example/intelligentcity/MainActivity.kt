@@ -12,9 +12,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {}
+
+
     fun registar_Utilizador(view: View) {
         val newActivityIntent = Intent(this, RegistarActivity::class.java)
         startActivity(newActivityIntent)
     }
+
+
     fun consultar(view: View) {}
 }

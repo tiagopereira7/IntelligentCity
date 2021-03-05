@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">IntelligentCity</string>
+    <string name="app_name">Cidade Inteligente</string>
     <string name="iniciar_sessao">Iniciar Sessao</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
+    <string name="login">Entrar</string>
     <string name="registar_user">Registar novo Utilizador</string>
     <string name="consultar_notas">Consultar Notas</string>
     <string name="registar_texto">Inserir dados do Utilizador</string>

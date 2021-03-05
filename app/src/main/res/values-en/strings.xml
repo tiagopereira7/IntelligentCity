@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intelligent City</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="registar_user">Register new User</string>
+    <string name="consultar_notas">See Notes</string>
+    <string name="registar_texto">Insert data of User</string>
+    <string name="nome">Name</string>
+    <string name="data_nasc">Birth Date</string>
+    <string name="morada">Adress</string>
+    <string name="iniciar_sessao">Sign in</string>
+</resources>
