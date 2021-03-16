@@ -1,6 +1,6 @@
 package com.example.intelligentcity
 
-class Second {
+class SecondActivity {
 
 
 }
