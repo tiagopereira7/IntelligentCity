@@ -1,6 +1,7 @@
 package com.example.intelligentcity.db
 
 import android.content.Context
+import android.icu.text.CaseMap
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 // Note: When you modify the database schema, you'll need to update the version number and define a migration strategy
 //For a sample, a destroy and re-create strategy can be sufficient. But, for a real app, you must implement a migration strategy.
 
-@Database(entities = arrayOf(Note::class), version = 4, exportSchema = false)
+@Database(entities = arrayOf(Note::class), version = 8, exportSchema = false)
 public abstract class NoteDB : RoomDatabase() {
 
     abstract fun noteDAO(): NoteDAO
@@ -29,6 +30,14 @@ public abstract class NoteDB : RoomDatabase() {
             INSTANCE?.let { database ->
                 scope.launch {
                     var NoteDAO = database.noteDAO()
+
+                    NoteDAO.deleteAll()
+
+                    //add note
+                    var note = Note(1, "Buraco na estrada", "Cuidado na curva x" )
+                    NoteDAO.insert(note)
+                    note = Note(2, "Arvore caida", "arvore caida na estrada" )
+                    NoteDAO.insert(note)
 
                 }
             }
@@ -54,7 +63,7 @@ public abstract class NoteDB : RoomDatabase() {
                 )
 
                 //estratégia de destruição
-                //.fallbackToDestructiveMigration()
+                .fallbackToDestructiveMigration()
                 .addCallback(WordDatabaseCallback(scope))
                 .build()
 

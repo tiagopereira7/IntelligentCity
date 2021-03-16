@@ -12,4 +12,8 @@
     <string name="morada">Morada</string>
     <string name="registar">Registar</string>
     <string name="add_note">adicionar nota</string>
+    <string name="textotitulo">Inserir nova nota</string>
+    <string name="titulo">titulo</string>
+    <string name="descricao">descricao</string>
+    <string name="guardar">Guardar</string>
 </resources>

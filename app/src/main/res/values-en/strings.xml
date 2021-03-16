@@ -13,4 +13,9 @@
     <string name="iniciar_sessao">Sign in</string>
     <string name="registar">Register</string>
     <string name="add_note">add Note</string>
+    <string name="textotitulo">Insert new note</string>
+    <string name="titulo">title</string>
+    <string name="descricao">description</string>
+    <string name="guardar">Save</string>
+
 </resources>

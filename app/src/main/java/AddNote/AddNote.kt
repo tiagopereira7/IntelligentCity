@@ -1,0 +1,5 @@
+package AddNote
+
+class AddNote {
+
+}
