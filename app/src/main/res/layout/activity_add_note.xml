@@ -33,23 +33,23 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edittitulo"
+            android:id="@+id/editTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/titulo" />
 
         <EditText
-            android:id="@+id/editdescricao"
+            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/descricao" />
 
         <Button
+            android:id="@+id/button_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:onClick="guardar"
             android:text="@string/guardar" />
 
     </LinearLayout>
