@@ -11,4 +11,5 @@
     <string name="data_nasc">Data de Nascimento</string>
     <string name="morada">Morada</string>
     <string name="registar">Registar</string>
+    <string name="add_note">adicionar nota</string>
 </resources>

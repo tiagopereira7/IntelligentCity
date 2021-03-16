@@ -12,4 +12,5 @@
     <string name="morada">Adress</string>
     <string name="iniciar_sessao">Sign in</string>
     <string name="registar">Register</string>
+    <string name="add_note">add Note</string>
 </resources>
