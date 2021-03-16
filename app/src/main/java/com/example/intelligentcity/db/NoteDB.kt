@@ -50,7 +50,7 @@ public abstract class NoteDB : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     NoteDB::class.java,
-                    "note_database",
+                    "notes_database",
                 )
 
                 //estratégia de destruição
