@@ -1,5 +1,0 @@
-package AddNote
-
-class AddNote {
-
-}
