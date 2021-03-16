@@ -20,7 +20,7 @@ interface NoteDAO {
     suspend fun deleteAll()
 
     @Query("DELETE FROM note where id == :id")
-    suspend fun deleteByCity(id: String)
+    suspend fun deleteById(id: Int)
 
     @Query("UPDATE note SET title= :title, text= :text WHERE id == :id")
     suspend fun updateById(title: String, text: String, id: Int)
