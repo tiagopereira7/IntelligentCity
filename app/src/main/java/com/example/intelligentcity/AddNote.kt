@@ -24,11 +24,8 @@ class AddNote : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editTitle.text)) {
+            if (TextUtils.isEmpty(editTitle.text) || TextUtils.isEmpty(editText.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-                 if (TextUtils.isEmpty(editText.text)) {
-                    setResult(Activity.RESULT_CANCELED, replyIntent)
-                }
             } else {
 
                 replyIntent.putExtra(EXTRA_REPLY_TITLE, editTitle.text.toString())

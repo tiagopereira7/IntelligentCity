@@ -19,5 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View) {}
 
-    fun consultar(view: View) {}
+    fun consultar(view: View) {
+        val intent = Intent(this,SecondActivity::class.java)
+        startActivity(intent)
+    }
 }
