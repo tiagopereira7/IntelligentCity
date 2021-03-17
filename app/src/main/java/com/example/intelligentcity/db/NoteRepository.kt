@@ -25,7 +25,7 @@ class NoteRepository(private val noteDAO: NoteDAO) {
     }
 
 
-    suspend fun updateById(city: String, country: String, id: Int){
-        noteDAO.updateById(city, country, id)
+    suspend fun updateById(title: String, text: String, id: Int){
+        noteDAO.updateById(title, text, id)
     }
 }

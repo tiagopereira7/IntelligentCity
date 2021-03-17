@@ -24,7 +24,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         // recycler view
-        val recyclerView = findViewById<RecyclerView>(R.id.layout_linha_card_view)
+        val recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view)
         val adapter = NoteAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

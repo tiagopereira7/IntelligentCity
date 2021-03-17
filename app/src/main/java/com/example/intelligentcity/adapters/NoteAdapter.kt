@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intelligentcity.R
 import com.example.intelligentcity.entities.Note
@@ -17,7 +18,9 @@ class NoteAdapter internal constructor(
     private var notes = emptyList<Note>()
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noteItemView: TextView = itemView.findViewById(R.id.layout_linha_card_view)
+        val noteItemView: TextView = itemView.findViewById(R.id.linha_titulo)
+        val textItemView: TextView = itemView.findViewById(R.id.linha_texto)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -25,9 +28,10 @@ class NoteAdapter internal constructor(
         return NoteViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+    override fun onBindViewHolder(viewholder: NoteViewHolder, position: Int) {
         val current = notes[position]
-        holder.noteItemView.text = current.title + "-" + current.text
+        viewholder.noteItemView.text = current.title
+        viewholder.textItemView.text = current.text
     }
 
     internal fun setNotes(notes: List<Note>) {

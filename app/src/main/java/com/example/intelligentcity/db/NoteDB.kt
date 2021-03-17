@@ -34,9 +34,9 @@ public abstract class NoteDB : RoomDatabase() {
                     NoteDAO.deleteAll()
 
                     //add note
-                    var note = Note(1, "Buraco na estrada", "Cuidado na curva x" )
+                    var note = Note(1, "Buraco na estrada", "Cuidado na curva" )
                     NoteDAO.insert(note)
-                    note = Note(2, "Arvore caida", "arvore caida na estrada" )
+                    note = Note(2, "Arvore caida", "Arvore caida na estrada" )
                     NoteDAO.insert(note)
 
                 }

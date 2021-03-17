@@ -18,8 +18,8 @@ class AddNote : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
 
-        editTitle = findViewById(R.id.title)
-        editText = findViewById(R.id.text)
+        editTitle = findViewById(R.id.editTitle)
+        editText = findViewById(R.id.editText)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {

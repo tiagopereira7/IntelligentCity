@@ -10,45 +10,47 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SecondActivity">
     <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/layout_linha_card_view"
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="6dp"
-        card_view:cardElevation="5dp">
+        app:cardCornerRadius="6dp"
+        app:cardElevation="5dp">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/teste">
+
             <TextView
-                android:id="@+id/layout_linha_titulo"
-                android:textStyle="bold"
-                android:textSize="20dp"
+                android:id="@+id/linha_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:text="titulo"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:textColor="#2196F3"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
+
             <TextView
-                android:id="@+id/layout_linha_descricao"
-                android:layout_below="@id/layout_linha_titulo"
-                android:text="descricao"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:id="@+id/linha_texto"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linha_titulo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="descricao"
+                android:textColor="#000000"></TextView>
 
             <ImageView
                 android:id="@+id/layout_linha_imageview"
-                android:layout_width="80dp"
+                android:layout_width="110dp"
                 android:layout_height="80dp"
+                android:background="@drawable/border_image"
                 android:layout_alignParentRight="true"
                 android:padding="8dp"
                 android:scaleType="centerCrop"
                 android:cropToPadding="true"
-                android:background="@drawable/logo"
+                android:src="@drawable/logo"
                 android:layout_margin="20dp">
             </ImageView>
 
