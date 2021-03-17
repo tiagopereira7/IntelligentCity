@@ -1,13 +1,16 @@
 package com.example.intelligentcity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intelligentcity.adapters.NoteAdapter
+import com.example.intelligentcity.entities.Note
 import com.example.intelligentcity.viewModel.NoteViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -40,6 +43,26 @@ class SecondActivity : AppCompatActivity() {
             startActivityForResult(intent, newWordActivityRequestCode)
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            val ptitle = data?.getStringExtra(AddNote.EXTRA_REPLY_TITLE)
+            val ptext = data?.getStringExtra(AddNote.EXTRA_REPLY_TEXT)
+
+            if (ptitle!= null && ptext != null) {
+                val note = Note(title = ptitle, text = ptext)
+                noteViewModel.insert(note)
+            }
+
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG).show()
+        }
     }
 }
 

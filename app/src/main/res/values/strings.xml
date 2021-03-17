@@ -16,4 +16,5 @@
     <string name="titulo">titulo</string>
     <string name="descricao">descricao</string>
     <string name="guardar">Guardar</string>
+    <string name="empty_not_saved">Nota nao inserida</string>
 </resources>
