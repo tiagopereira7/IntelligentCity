@@ -3,6 +3,8 @@ package com.example.intelligentcity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
+import android.widget.AdapterView.AdapterContextMenuInfo
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -62,6 +64,33 @@ class SecondActivity : AppCompatActivity() {
                 applicationContext,
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_cont, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+
+        return when (item!!.itemId) {
+            R.id.edit -> {
+
+
+                Toast.makeText(this@SecondActivity, " Atualizado com sucesso! ", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.remove -> {
+                //apagar da bd
+                noteViewModel.deleteById(id = item.itemId)
+
+                //refresh da lista
+                Toast.makeText(this@SecondActivity, " Removido com sucesso! ", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> super.onContextItemSelected(item)
         }
     }
 }

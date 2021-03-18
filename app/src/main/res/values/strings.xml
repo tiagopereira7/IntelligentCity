@@ -17,4 +17,6 @@
     <string name="descricao">descricao</string>
     <string name="guardar">Guardar</string>
     <string name="empty_not_saved">Nota nao inserida</string>
+    <string name="menu_editar">Editar</string>
+    <string name="menu_remover">Remover</string>
 </resources>
