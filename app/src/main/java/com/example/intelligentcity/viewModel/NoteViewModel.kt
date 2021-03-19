@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.intelligentcity.DAO.NoteDAO
 import com.example.intelligentcity.db.NoteDB
 import com.example.intelligentcity.db.NoteRepository
 import com.example.intelligentcity.entities.Note
@@ -30,6 +31,9 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
      */
     fun insert(note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(note)
+    }
+    fun getNoteById(id: Int): LiveData<List<Note>> {
+        return repository.getNoteById(id)
     }
 
     // delete all

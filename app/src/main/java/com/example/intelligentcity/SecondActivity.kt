@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView.AdapterContextMenuInfo
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,11 +28,14 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+
+
         // recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view)
         val adapter = NoteAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
 
         // view model
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
@@ -46,6 +52,8 @@ class SecondActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -73,7 +81,7 @@ class SecondActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_cont, menu)
     }
 
-    override fun onContextItemSelected(item: MenuItem?): Boolean {
+    /*override fun onContextItemSelected(item: MenuItem?): Boolean {
 
         return when (item!!.itemId) {
             R.id.edit -> {
@@ -82,7 +90,7 @@ class SecondActivity : AppCompatActivity() {
                 Toast.makeText(this@SecondActivity, " Atualizado com sucesso! ", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.remove -> {
+           R.id.remove -> {
                 //apagar da bd
                 noteViewModel.deleteById(id = item.itemId)
 
@@ -92,6 +100,6 @@ class SecondActivity : AppCompatActivity() {
             }
             else -> super.onContextItemSelected(item)
         }
-    }
+    }*/
 }
 

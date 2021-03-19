@@ -28,4 +28,8 @@ class NoteRepository(private val noteDAO: NoteDAO) {
     suspend fun updateById(title: String, text: String, id: Int){
         noteDAO.updateById(title, text, id)
     }
+
+    fun getNoteById(id: Int): LiveData<List<Note>> {
+        return noteDAO.getNoteById(id)
+    }
 }

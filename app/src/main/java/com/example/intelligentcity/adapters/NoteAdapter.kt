@@ -1,12 +1,13 @@
 package com.example.intelligentcity.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.intelligentcity.EditNote
 import com.example.intelligentcity.R
 import com.example.intelligentcity.entities.Note
 
@@ -32,6 +33,14 @@ class NoteAdapter internal constructor(
         val current = notes[position]
         viewholder.noteItemView.text = current.id.toString() + "-" + current.title
         viewholder.textItemView.text = current.text
+
+        viewholder.itemView.setOnClickListener{
+            val intent = Intent(viewholder.itemView.context, EditNote::class.java)
+            intent.putExtra("id", current.id)
+            viewholder.itemView.context.startActivity(intent)
+
+        }
+
     }
 
     internal fun setNotes(notes: List<Note>) {

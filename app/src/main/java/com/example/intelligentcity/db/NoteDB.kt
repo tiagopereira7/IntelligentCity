@@ -31,7 +31,7 @@ public abstract class NoteDB : RoomDatabase() {
                 scope.launch {
                     var NoteDAO = database.noteDAO()
 
-                    NoteDAO.deleteAll()
+                    //NoteDAO.deleteAll()
 
                     //add note
                     var note = Note(1, "Buraco na estrada", "Cuidado na curva" )

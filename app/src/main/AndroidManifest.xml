@@ -12,6 +12,7 @@
         <activity android:name=".RegistarActivity"></activity>
         <activity android:name=".SecondActivity"></activity>
         <activity android:name=".AddNote"></activity>
+        <activity android:name=".EditNote"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

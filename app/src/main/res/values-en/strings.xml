@@ -20,5 +20,7 @@
     <string name="empty_not_saved">Note not inserted</string>
     <string name="menu_editar">Edit</string>
     <string name="menu_remover">Remove</string>
+    <string name="eliminar">Delete</string>
+    <string name="textotituloeditar">Change Note</string>
 
 </resources>

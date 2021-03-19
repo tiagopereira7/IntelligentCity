@@ -19,4 +19,6 @@
     <string name="empty_not_saved">Nota nao inserida</string>
     <string name="menu_editar">Editar</string>
     <string name="menu_remover">Remover</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="textotituloeditar">Alterar Nota</string>
 </resources>
