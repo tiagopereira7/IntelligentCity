@@ -18,9 +18,13 @@
     <string name="descricao">description</string>
     <string name="guardar">Save</string>
     <string name="empty_not_saved">Note not inserted</string>
+    <string name="empty_not_edit">Note was not updated</string>
+    <string name="empty_edit">Note Updated</string>
+    <string name="empty_delete">Note successfully removed </string>
     <string name="menu_editar">Edit</string>
     <string name="menu_remover">Remove</string>
     <string name="eliminar">Delete</string>
     <string name="textotituloeditar">Change Note</string>
+
 
 </resources>

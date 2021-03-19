@@ -30,15 +30,21 @@ class EditNote : AppCompatActivity() {
         editText2 = findViewById(R.id.editText2)
 
         var id = 0
+        var title3 = ""
+        var text3 = ""
+
+
         id = intent.getIntExtra("id", 0)
+        title3 = intent.getStringExtra("title").toString()
+        text3 = intent.getStringExtra("text").toString()
+
+        editTitle2.setText(title3)
+        editText2.setText(text3)
+
 
         // view model
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
-        noteViewModel.getNoteById(id).observe(this, Observer { notes ->
-            editTitle2.setText(notes.get(0).title)
-            editText2.setText(notes.get(0).text)
 
-        })
 
         val button = findViewById<Button>(R.id.button_save2)
         button.setOnClickListener {
@@ -61,22 +67,21 @@ class EditNote : AppCompatActivity() {
         val text = editText2.text.toString()
 
         if (title.isNotBlank()  && text.isNotBlank()) {
-
             noteViewModel.updateById(title, text, id)
 
+            Toast.makeText(applicationContext, R.string.empty_edit, Toast.LENGTH_LONG).show()
             finish()
+
         } else {
-        Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
+
+        Toast.makeText(applicationContext, R.string.empty_not_edit, Toast.LENGTH_LONG).show()
         }
 
     }
 
     fun eliminar(id :Int){
         noteViewModel.deleteById(id)
-
+        Toast.makeText(applicationContext, R.string.empty_delete, Toast.LENGTH_LONG).show()
         finish()
     }
 }

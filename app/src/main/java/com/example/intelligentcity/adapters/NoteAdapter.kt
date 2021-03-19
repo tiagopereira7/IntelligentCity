@@ -37,6 +37,9 @@ class NoteAdapter internal constructor(
         viewholder.itemView.setOnClickListener{
             val intent = Intent(viewholder.itemView.context, EditNote::class.java)
             intent.putExtra("id", current.id)
+            intent.putExtra("title", current.title)
+            intent.putExtra("text", current.text)
+
             viewholder.itemView.context.startActivity(intent)
 
         }
