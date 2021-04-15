@@ -37,8 +37,8 @@
             android:layout_below="@id/bt1"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:shadowColor="#F44336"
-           /> android:drawableLeft="@drawable/ic_all_reports"
+            android:shadowColor="#F44336" />
+            android:drawableLeft="@drawable/ic_all_reports"
             /*android:onClick="all_reports"/>*/
 
     </RelativeLayout>
