@@ -7,13 +7,13 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MapActivity">
 
-<fragment
-    android:id="@+id/map"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-<RelativeLayout
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
     android:id="@+id/Relative"
     android:layout_alignParentBottom="true"
     android:layout_width="wrap_content"
@@ -23,23 +23,25 @@ tools:context=".MapActivity">
     android:layout_alignParentRight="true"
     android:layout_marginRight="8dp">
 
+
+
     <Button
         android:id="@+id/bt1"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:shadowColor="#36DF3C"/>
-    /*android:drawableLeft="@drawable/ic_my_reports"
-    /*android:onClick="my_reports"*/
+        android:shadowColor="#36DF3C"
+        android:layout_centerHorizontal="true"
+        app:icon="@drawable/ic_my_reports"
+        />
 
-
-    <Button
+        <Button
         android:id="@+id/bt2"
         android:layout_below="@id/bt1"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:shadowColor="#F44336" />
-    android:drawableLeft="@drawable/ic_all_reports"
-    /*android:onClick="all_reports"/>*/
+        android:shadowColor="#F44336"
+        android:drawableLeft="@drawable/ic_all_reports"
+        />
 
 </RelativeLayout>
 </RelativeLayout>
