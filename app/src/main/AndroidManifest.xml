@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.intelligentcity">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -9,10 +21,21 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.IntelligentCity">
-        <activity android:name=".RegistarActivity"></activity>
-        <activity android:name=".SecondActivity"></activity>
-        <activity android:name=".AddNote"></activity>
-        <activity android:name=".EditNote"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD57dIqodIjf-XMwoGPRdGfuU7PTvJ_2iQ" />
+
+
+        <activity android:name=".MapActivity"/>
+        <activity android:name=".RegistarActivity" />
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".AddNote" />
+        <activity android:name=".EditNote" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

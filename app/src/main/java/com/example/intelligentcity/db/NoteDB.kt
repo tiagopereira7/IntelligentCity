@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 //For a sample, a destroy and re-create strategy can be sufficient. But, for a real app, you must implement a migration strategy.
 
 @Database(entities = arrayOf(Note::class), version = 6, exportSchema = false)
+
 public abstract class NoteDB : RoomDatabase() {
 
     abstract fun noteDAO(): NoteDAO

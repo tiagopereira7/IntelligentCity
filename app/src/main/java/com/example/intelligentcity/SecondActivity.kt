@@ -81,22 +81,5 @@ class SecondActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_cont, menu)
     }
 
-    /*override fun onContextItemSelected(item: MenuItem?): Boolean {
-
-        return when (item!!.itemId) {
-            R.id.edit -> {
-                Toast.makeText(this@SecondActivity, " Atualizado com sucesso! ", Toast.LENGTH_SHORT).show()
-                true
-            }
-           R.id.remove -> {
-                //apagar da bd
-                noteViewModel.deleteById(id = item.itemId)
-                //refresh da lista
-                Toast.makeText(this@SecondActivity, " Removido com sucesso! ", Toast.LENGTH_SHORT).show()
-                return true
-            }
-            else -> super.onContextItemSelected(item)
-        }
-    }*/
 }
 
