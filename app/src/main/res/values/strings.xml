@@ -24,5 +24,6 @@
     <string name="menu_remover">Remover</string>
     <string name="eliminar">Eliminar</string>
     <string name="textotituloeditar">Alterar Nota</string>
+    <string name="title_activity_map">Map</string>
 
 </resources>
