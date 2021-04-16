@@ -24,24 +24,28 @@ tools:context=".MapActivity">
     android:layout_marginRight="8dp">
 
 
-
-    <Button
-        android:id="@+id/bt1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:shadowColor="#36DF3C"
-        android:layout_centerHorizontal="true"
-        app:icon="@drawable/ic_my_reports"
-        />
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:shadowColor="#36DF3C"
+            app:backgroundTint="#434343"
+            app:icon="@drawable/ic_my_reports"
+            app:iconGravity="textStart"
+            app:iconPadding="-2dp"
+            app:iconSize="35dp" />
 
         <Button
-        android:id="@+id/bt2"
-        android:layout_below="@id/bt1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:shadowColor="#F44336"
-        android:drawableLeft="@drawable/ic_all_reports"
-        />
+            android:id="@+id/bt2"
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/bt1"
+            android:shadowColor="#F44336"
+            app:backgroundTint="#434343"
+            app:icon="@drawable/ic_all_reports"
+            app:iconGravity="textStart"
+            app:iconPadding="-2dp"
+            app:iconSize="35dp" />
 
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>
