@@ -25,6 +25,10 @@
     <string name="menu_remover">Remove</string>
     <string name="eliminar">Delete</string>
     <string name="textotituloeditar">Change Note</string>
+    <string name="voltarmapa">Return Map</string>
+    <string name="consultarnomapa">Consult</string>
+    <string name="localizacao">Localization</string>
+    <string name="tirar_fotografia">Take Photo</string>
 
 
 </resources>
