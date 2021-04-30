@@ -8,6 +8,7 @@ import retrofit2.Call
 
 interface EndPoints {
 
+    @FormUrlEncoded
     @POST("/createUser/")
     fun CreateUser(
             @Field("nome") nome:String,
@@ -16,7 +17,7 @@ interface EndPoints {
 
     ):Call<OutputPost>
 
-
+    @FormUrlEncoded
     @POST("/userLogin/")
     fun UserLogin(
             @Field("email") email:String,
