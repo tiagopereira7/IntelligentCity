@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/back"
     tools:context=".NotasActivity">
 
 
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textotitulo"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <EditText
@@ -62,7 +63,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
             android:padding="8dp"
