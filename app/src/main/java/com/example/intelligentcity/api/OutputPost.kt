@@ -1,8 +1,3 @@
 package com.example.intelligentcity.api
 
-data class OutputPost(
-        val id: Int,
-        val nome: String,
-        val email: String,
-        val password: String
-)
+data class OutputPost( val status: String, val MSG : String, val data : User)
