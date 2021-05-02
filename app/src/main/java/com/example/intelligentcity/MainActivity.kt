@@ -1,10 +1,10 @@
 package com.example.intelligentcity
 
-import android.app.DownloadManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,17 +16,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-private lateinit var editTextEmail: EditText
-private lateinit var editTextPassword: EditText
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        editTextEmail = findViewById(R.id.editTextEmail)
-        editTextPassword = findViewById(R.id.editTextPassword)
-
 
     }
 
@@ -38,20 +33,25 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View) {
 
-        val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val email = editTextEmail.text.toString().trim()
-        val password = editTextPassword.text.toString().trim()
+        val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
+        val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
+        Log.d("username", email)
+        Log.d("password", password)
 
-        if (email.isEmpty()||password.isEmpty()){
-            editTextEmail.error = "-Os campos estao vazios"
-        } else if (email.isEmpty()){
-            editTextEmail.error = "Tem de preencher o campo Email"
+
+        if(email.isEmpty() && password.isEmpty()){
+            Toast.makeText(this@MainActivity, "Os campos estao vazios!!", Toast.LENGTH_SHORT).show()
+
+        }else if (email.isEmpty()){
+            findViewById<EditText>(R.id.editTextEmail).error = "Tem de preencher o Email"
+
         }else if(password.isEmpty()){
-            editTextPassword.error = "Tem de preencher o campo password"
-        }else{
+            findViewById<EditText>(R.id.editTextPassword).error = "Tem de preencher a password"
 
-            val user = LoginRequest(email, password)
-            val call = request.UserLogin(user)
+        }else{
+            val request = ServiceBuilder.buildService(EndPoints::class.java)
+            val loginRequest = LoginRequest(email , password)
+            val call = request.userLogin(loginRequest)
 
             call.enqueue(object : Callback<OutputPost> {
 
@@ -59,18 +59,20 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         Toast.makeText(this@MainActivity, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show()
 
+                        val intent = Intent(this@MainActivity, MapActivity::class.java)
+
+                        intent.putExtra("id", response.body()?.id)
+                        intent.putExtra("Email", response.body()?.Email)
+
+                        startActivity(intent)
                     }
                 }
                 override fun onFailure(call:Call<OutputPost>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "ERRO NO LOGIN", Toast.LENGTH_SHORT).show()
-                    Log.d("Erro", t.toString())
+                    Toast.makeText(this@MainActivity, "Utilizador nao existe", Toast.LENGTH_SHORT).show()
                 }
             })
         }
 
-
-        //val intent = Intent(this, MapActivity::class.java)
-        //startActivity(intent)
     }
 
     fun consultar(view: View) {

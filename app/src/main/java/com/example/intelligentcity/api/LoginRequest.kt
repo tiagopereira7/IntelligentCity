@@ -1,6 +1,6 @@
 package com.example.intelligentcity.api
 
 data class LoginRequest(
-        val email: String,
+        val Email: String,
         val password: String
 )

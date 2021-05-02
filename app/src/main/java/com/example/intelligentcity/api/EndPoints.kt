@@ -6,6 +6,6 @@ import retrofit2.Call
 
 interface EndPoints {
 
-    @POST("api/loginUser/")
-    fun UserLogin(@Body loginRequest: LoginRequest):Call<OutputPost>
+    @POST("api/loginUser")
+    fun userLogin(@Body loginRequest: LoginRequest): Call<OutputPost>
 }

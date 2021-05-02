@@ -68,6 +68,7 @@
             android:layout_gravity="center"
             android:text="@string/login"
             android:onClick="login"
+
             />
 
         <TextView
