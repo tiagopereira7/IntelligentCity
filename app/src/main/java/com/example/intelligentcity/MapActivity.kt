@@ -66,7 +66,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         l.latitude = latLng.latitude
         l.longitude = latLng.longitude
 
-
         val i = Intent(this, NotasActivity::class.java)
         //i.putExtra(Utils.LAT, latLng.latitude)
         //i.putExtra(Utils.LONG, latLng.longitude)
