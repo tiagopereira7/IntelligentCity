@@ -1,17 +1,21 @@
 package com.example.intelligentcity
 
+import android.content.Intent
+import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.io.Serializable
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener{
 
     private lateinit var mMap: GoogleMap
     private lateinit var email: String
@@ -45,5 +49,31 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(home).title("Marker in my home"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(home, 12F))
 
+        googleMap.setOnMapClickListener(this)
+        googleMap.setOnMapLongClickListener(this)
+
     }
+
+    override fun onMapClick(latLng: LatLng) {
+        Toast.makeText(this, "Latitude: " + latLng.latitude.toString() + " longitude: " + latLng.longitude.toString(),
+                Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onMapLongClick(latLng: LatLng) {
+
+        mMap.addMarker(MarkerOptions().position(latLng))
+        val l = Location("")
+        l.latitude = latLng.latitude
+        l.longitude = latLng.longitude
+
+
+        val i = Intent(this, NotasActivity::class.java)
+        //i.putExtra(Utils.LAT, latLng.latitude)
+        //i.putExtra(Utils.LONG, latLng.longitude)
+        //i.putExtra("latitude", latLng.latitude.toString())
+        //i.putExtra("longitude", latLng.longitude.toString())
+        startActivity(i)
+    }
+
+
 }
