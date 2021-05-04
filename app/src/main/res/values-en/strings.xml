@@ -29,6 +29,11 @@
     <string name="consultarnomapa">Consult</string>
     <string name="localizacao">Localization</string>
     <string name="tirar_fotografia">Photo</string>
+    <string name="erro_titulo">You must fill in the title!</string>
+    <string name="erro_desc">You must fill in the description!</string>
+    <string name="erro_local">You must fill in the location!</string>
+    <string name="logout">Session ended! Thank you.</string>
+    <string name="botao_logout">Logout</string>
 
 
 </resources>

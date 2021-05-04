@@ -60,10 +60,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_width="230dp"
+            android:layout_height="170dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/border_image"
             android:cropToPadding="true"
             android:padding="8dp"
@@ -75,16 +75,11 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="@string/tirar_fotografia" />
         android:onClick="dispatchTakePictureIntent"
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/guardar" />
 
     </LinearLayout>
 
@@ -101,14 +96,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:text="@string/voltarmapa"
-            />
+            android:onClick="backToMap" />
 
         <Button
             android:layout_weight="1"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/consultarnomapa"
-            />
+            android:text="@string/guardar"
+            android:onClick="guardar" />
 
     </LinearLayout>
 </RelativeLayout>

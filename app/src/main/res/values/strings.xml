@@ -28,6 +28,11 @@
     <string name="consultarnomapa">Consultar</string>
     <string name="localizacao">Localizacao</string>
     <string name="tirar_fotografia">Fotografia</string>
+    <string name="erro_titulo">Tem de preencher o titulo!</string>
+    <string name="erro_desc">Tem de preencher o descricao!</string>
+    <string name="erro_local">Tem de preencher a localizacao!</string>
+    <string name="logout">Sessão terminada! Obrigado.</string>
+    <string name="botao_logout">Sair</string>
 
 
 </resources>

@@ -3,6 +3,8 @@ package com.example.intelligentcity
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -13,7 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import java.io.Serializable
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener{
 
@@ -28,8 +29,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        email = intent.getStringExtra("Email")
-        Toast.makeText(this, "Email:" + email, Toast.LENGTH_SHORT).show()
+        //email = intent.getStringExtra("Email")
+        //Toast.makeText(this, "Email:" + email, Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -54,6 +55,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
 
     }
 
+    override fun onBackPressed() {
+        moveTaskToBack(false)
+    }
+
     override fun onMapClick(latLng: LatLng) {
         Toast.makeText(this, "Latitude: " + latLng.latitude.toString() + " longitude: " + latLng.longitude.toString(),
                 Toast.LENGTH_SHORT).show()
@@ -67,11 +72,29 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         l.longitude = latLng.longitude
 
         val i = Intent(this, NotasActivity::class.java)
-        //i.putExtra(Utils.LAT, latLng.latitude)
-        //i.putExtra(Utils.LONG, latLng.longitude)
-        //i.putExtra("latitude", latLng.latitude.toString())
-        //i.putExtra("longitude", latLng.longitude.toString())
+        i.putExtra("latitude", latLng.latitude.toString())
+        i.putExtra("longitude", latLng.longitude.toString())
         startActivity(i)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_ativ, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.opcao1 -> {
+                Toast.makeText(this@MapActivity, getString(R.string.logout), Toast.LENGTH_SHORT).show()
+                val i = Intent(this@MapActivity, MainActivity::class.java)
+                startActivity(i)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
