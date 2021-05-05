@@ -48,7 +48,7 @@ class NotasActivity : AppCompatActivity() {
         } else if (localizacao.isEmpty()) {
             findViewById<EditText>(R.id.editlocalizacao).error = getString(R.string.erro_local)
         } else if (fotografia.isEmpty()) {
-            findViewById<EditText>(R.id.editcoordenadas).error = "Tem de tirar uma fotografia!"  // corrigir para foto
+            findViewById<EditText>(R.id.editcoordenadas).error = "Tem de tirar uma fotografia!"  //corrigir para foto
         } else {
 
 
