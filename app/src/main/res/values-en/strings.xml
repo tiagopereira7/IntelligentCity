@@ -13,7 +13,7 @@
     <string name="iniciar_sessao">Sign in</string>
     <string name="registar">Register</string>
     <string name="add_note">add Note</string>
-    <string name="textotitulo">Insert new note</string>
+    <string name="textotitulo">Insert new report</string>
     <string name="titulo">title</string>
     <string name="descricao">description</string>
     <string name="guardar">Save</string>
@@ -29,15 +29,19 @@
     <string name="consultarnomapa">Consult</string>
     <string name="localizacao">Localization</string>
     <string name="tirar_fotografia">Photo</string>
-    <string name="erro_titulo">You must fill in the title!</string>
-    <string name="erro_desc">You must fill in the description!</string>
-    <string name="erro_local">You must fill in the location!</string>
+    <string name="erro_titulo">You must fill the title!</string>
+    <string name="erro_desc">You must fill the description!</string>
+    <string name="erro_local">You must fill the location!</string>
     <string name="logout">Session ended! Thank you.</string>
     <string name="botao_logout">Logout</string>
     <string name="other_user_report">OTHER USER REPORT</string>
-    <string name="gravar_alteracao_dialog">Atualizar</string>
-    <string name="apagar_dialog">Apagar</string>
-    <string name="atualizar_dialog">Atualizar</string>
+    <string name="my_report">MY REPORT</string>
+    <string name="gravar_alteracao_dialog">Update</string>
+    <string name="apagar_dialog">Delete</string>
+    <string name="atualizar_dialog">Update</string>
+    <string name="toast_vazio">The fields are empty!</string>
+    <string name="erro_email">You must fill the email!</string>
+    <string name="erro_pass">You must fill the password!</string>
 
 
 </resources>

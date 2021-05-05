@@ -40,13 +40,13 @@ class MainActivity : AppCompatActivity() {
 
 
         if(email.isEmpty() && password.isEmpty()){
-            Toast.makeText(this@MainActivity, "Os campos estao vazios!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, getString(R.string.toast_vazio), Toast.LENGTH_SHORT).show()
 
         }else if (email.isEmpty()){
-            findViewById<EditText>(R.id.editTextEmail).error = "Tem de preencher o Email"
+            findViewById<EditText>(R.id.editTextEmail).error = getString(R.string.erro_email)
 
         }else if(password.isEmpty()){
-            findViewById<EditText>(R.id.editTextPassword).error = "Tem de preencher a password"
+            findViewById<EditText>(R.id.editTextPassword).error = getString(R.string.erro_pass)
 
         }else{
             val request = ServiceBuilder.buildService(EndPoints::class.java)

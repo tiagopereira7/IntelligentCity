@@ -12,7 +12,7 @@
     <string name="morada">Morada</string>
     <string name="registar">Registar</string>
     <string name="add_note">adicionar nota</string>
-    <string name="textotitulo">Inserir nova nota</string>
+    <string name="textotitulo">Inserir novo report</string>
     <string name="titulo">titulo</string>
     <string name="descricao">descricao</string>
     <string name="guardar">Guardar</string>
@@ -33,11 +33,14 @@
     <string name="erro_local">Tem de preencher a localizacao!</string>
     <string name="logout">Sessão terminada! Obrigado.</string>
     <string name="botao_logout">Sair</string>
-    <string name="other_user_report">OTHER USER REPORT</string>
-    <string name="my_report">MY REPORT</string>
+    <string name="other_user_report">OUTRO USER REPORT </string>
+    <string name="my_report">MEU REPORT</string>
     <string name="gravar_alteracao_dialog">Atualizar</string>
     <string name="apagar_dialog">Apagar</string>
     <string name="atualizar_dialog">Atualizar</string>
+    <string name="toast_vazio">Os campos estao vazios!</string>
+    <string name="erro_email">Tem de preencher o Email!</string>
+    <string name="erro_pass">Tem de preencher a password!</string>
 
 
 </resources>
