@@ -34,6 +34,10 @@
     <string name="erro_local">You must fill in the location!</string>
     <string name="logout">Session ended! Thank you.</string>
     <string name="botao_logout">Logout</string>
+    <string name="other_user_report">OTHER USER REPORT</string>
+    <string name="gravar_alteracao_dialog">Atualizar</string>
+    <string name="apagar_dialog">Apagar</string>
+    <string name="atualizar_dialog">Atualizar</string>
 
 
 </resources>
