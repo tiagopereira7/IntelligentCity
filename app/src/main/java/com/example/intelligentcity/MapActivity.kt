@@ -14,12 +14,13 @@ import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener{
 
     private lateinit var mMap: GoogleMap
-    private lateinit var email: String
+    lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        //email = intent.getStringExtra("Email")
+        id = intent.getStringExtra("id")
         //Toast.makeText(this, "Email:" + email, Toast.LENGTH_SHORT).show()
     }
 
@@ -71,9 +72,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         l.latitude = latLng.latitude
         l.longitude = latLng.longitude
 
-        val i = Intent(this, NotasActivity::class.java)
+        val i = Intent(this@MapActivity, NotasActivity::class.java)
         i.putExtra("latitude", latLng.latitude.toString())
         i.putExtra("longitude", latLng.longitude.toString())
+        i.putExtra("id", id)
         startActivity(i)
     }
 

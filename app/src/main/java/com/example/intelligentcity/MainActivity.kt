@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<OutputPost>, response: Response<OutputPost>) {
                     if (response.isSuccessful){
-                        Toast.makeText(this@MainActivity, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, getString(R.string.login_sucess), Toast.LENGTH_SHORT).show()
 
                         val intent = Intent(this@MainActivity, MapActivity::class.java)
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 override fun onFailure(call:Call<OutputPost>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "Utilizador nao existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, getString(R.string.login_erro), Toast.LENGTH_SHORT).show()
                 }
             })
         }

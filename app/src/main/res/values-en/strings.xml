@@ -42,6 +42,11 @@
     <string name="toast_vazio">The fields are empty!</string>
     <string name="erro_email">You must fill the email!</string>
     <string name="erro_pass">You must fill the password!</string>
+    <string name="login_sucess">Login successfully.</string>
+    <string name="login_erro">User do not exist!</string>
+    <string name="report_sucess">Report successfully.</string>
+    <string name="report_erro">Error inserting report!</string>
+    <string name="report_vazio">Empty fields are not possible.</string>
 
 
 </resources>

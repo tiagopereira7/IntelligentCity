@@ -41,6 +41,11 @@
     <string name="toast_vazio">Os campos estao vazios!</string>
     <string name="erro_email">Tem de preencher o Email!</string>
     <string name="erro_pass">Tem de preencher a password!</string>
+    <string name="login_sucess">Login efetuado com sucesso.</string>
+    <string name="login_erro">Utilizador nao existe!</string>
+    <string name="report_sucess">Report efetuado com sucesso.</string>
+    <string name="report_erro">Erro ao inserir report!</string>
+    <string name="report_vazio">Não é possível ter campos vazios.</string>
 
 
 </resources>
