@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intelligentcity.api.EndPoints
@@ -158,8 +159,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                             marker = mMap.addMarker(
                                     MarkerOptions()
                                             .position(position)
-                                            .title(it.localizacao + " - " + it.data)
-                                            .title(it.titulo)
+                                            .title(it.titulo + " - " + it.data)
+                                            .snippet(it.localizacao)
+                                            .icon(
+                                                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+                                            )
                             )
                             marker.tag = it.id
                             myMarkers.add(marker)
@@ -169,8 +173,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                             marker = mMap.addMarker(
                                     MarkerOptions()
                                             .position(position)
-                                            .title(it.localizacao + " - " + it.data)
-                                            .title(it.titulo)
+                                            .title(it.titulo + " - " + it.data)
+                                            .snippet(it.localizacao)
+                                            .icon(
+                                                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)
+                                            )
                             )
                             marker.tag = it.id
                             otherMarkers.add(marker)
@@ -185,6 +192,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
             }
             })
         }
+
+    fun myReport(view: View) {
+        Toast.makeText(this@MapActivity, getString(R.string.my_report), Toast.LENGTH_SHORT).show()
+    }
+    fun otherReport(view: View) {
+        Toast.makeText(this@MapActivity, getString(R.string.other_user_report), Toast.LENGTH_SHORT).show()
+
+    }
 
 
 }

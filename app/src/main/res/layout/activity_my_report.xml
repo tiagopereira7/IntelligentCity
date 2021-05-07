@@ -81,8 +81,20 @@
                 android:layout_marginLeft="20dp"/>
 
             <EditText
-                android:id="@+id/morada_dialog"
-                android:layout_below="@+id/data_dialog"
+            android:id="@+id/morada_dialog"
+            android:layout_below="@+id/data_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/morada2_dialog"
+                android:layout_below="@+id/morada_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
@@ -105,7 +117,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/gravar_alteracao_dialog"
+                android:layout_below="@+id/morada2_dialog"
                 android:orientation="horizontal">
 
                 <Button

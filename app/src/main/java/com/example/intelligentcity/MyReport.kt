@@ -40,20 +40,23 @@ class MyReport : AppCompatActivity() {
                 if (response.isSuccessful){
                     report=response.body()
                     findViewById<EditText>(R.id.title_dialog).setText(report?.titulo)
-                    Log.d("xxxxxxxxxxxxxxx", )
+                    Log.d("xxxxxxxxxxxxxxx", report?.titulo)
                     findViewById<EditText>(R.id.edittext_dialog).setText(report?.descricao)
                     val imageView : ImageView = findViewById(R.id.photo_dialog)
                     Log.d("xxx", report?.fotografia.toString())
                     val url = "http://intelligentcity.000webhostapp.com/myslim/report_photos/"+ report?.fotografia
                     Picasso.get().load(url).into(imageView)
+                    findViewById<EditText>(R.id.data_dialog).setText(report?.data)
                     findViewById<EditText>(R.id.localizacao_dialog).setText(report?.localizacao)
-                    findViewById<EditText>(R.id.morada_dialog).setText(report?.latitude + report?.longitude)
+                    findViewById<EditText>(R.id.morada_dialog).setText("Lat: "+report?.latitude)
+                    findViewById<EditText>(R.id.morada2_dialog).setText("Long: "+ report?.longitude)
+
                 }
             }
 
             override fun onFailure(call: Call<ReportRequest>, t: Throwable) {
                 Toast.makeText(this@MyReport, "Erro", Toast.LENGTH_SHORT).show()
-                Log.d("xxx", t.toString())
+                Log.d("ERRO", t.toString())
             }
         })
     }

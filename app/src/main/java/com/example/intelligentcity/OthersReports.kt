@@ -44,9 +44,10 @@ class OthersReports : AppCompatActivity() {
                     Log.d("xxx", report?.fotografia.toString())
                     val url = "http://intelligentcity.000webhostapp.com/myslim/report_photos/"+ report?.fotografia
                     Picasso.get().load(url).into(imageView)
+                    findViewById<EditText>(R.id.data_mydialog).setText(report?.data)
                     findViewById<EditText>(R.id.localizacao_mydialog).setText(report?.localizacao)
-                    findViewById<EditText>(R.id.morada_mydialog).setText(report?.latitude + report?.longitude)
-                }
+                    findViewById<EditText>(R.id.morada_mydialog).setText("Lat: "+report?.latitude)
+                    findViewById<EditText>(R.id.morada2_mydialog).setText("Long: "+ report?.longitude)                }
             }
 
             override fun onFailure(call: Call<ReportRequest>, t: Throwable) {

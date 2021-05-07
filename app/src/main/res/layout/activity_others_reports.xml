@@ -91,5 +91,17 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/morada2_mydialog"
+                android:layout_below="@+id/morada_mydialog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:enabled="false"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"/>
         </RelativeLayout>
     </ScrollView>
