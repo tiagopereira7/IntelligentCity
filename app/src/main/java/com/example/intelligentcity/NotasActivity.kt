@@ -168,6 +168,8 @@ class NotasActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         Toast.makeText(this@NotasActivity, getString(R.string.report_sucess), Toast.LENGTH_SHORT).show()
                         finish()
+                        intent.putExtra("id", response.body()?.utilizador_id)
+                        intent.putExtra("id_report", response.body()?.id)
                     }
                 }
 

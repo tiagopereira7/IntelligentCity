@@ -1,19 +1,14 @@
 package com.example.intelligentcity
 
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intelligentcity.api.EndPoints
-import com.example.intelligentcity.api.ReportOutPutPost
 import com.example.intelligentcity.api.ReportRequest
 import com.example.intelligentcity.api.ServiceBuilder
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,28 +17,37 @@ import com.google.android.gms.maps.GoogleMap.*
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener, OnMarkerClickListener {
 
     private lateinit var mMap: GoogleMap
     lateinit var id: String
+    lateinit var myMarkers: MutableList<Marker>
+    lateinit var otherMarkers: MutableList<Marker>
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
+
+        myMarkers = mutableListOf<Marker>()
+        otherMarkers = mutableListOf<Marker>()
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         id = intent.getStringExtra("id")
+
 
     }
 
@@ -56,29 +60,46 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
         val home = LatLng(41.554329, -8.351042)
         mMap.addMarker(MarkerOptions().position(home).title("Marker in my home"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(home, 12F))
 
+        mMap.setOnInfoWindowClickListener { marker ->
+            onMarkerClick(marker)
+            myMarkers.forEach{
+                if (marker.id == it.id){
+                    val intent = Intent(this@MapActivity, MyReport::class.java)
+                    intent.putExtra("id_report", it.tag.toString())
+                    startActivity(intent)
+                }
+            }
+            otherMarkers.forEach{
+                if (marker.id == it.id){
+                    val intent = Intent(this@MapActivity, OthersReports::class.java)
+                    intent.putExtra("id_report", it.tag.toString())
+                    startActivity(intent)
+                }
+            }
+        }
         googleMap.setOnMapClickListener(this)
         googleMap.setOnMapLongClickListener(this)
 
-
     }
-
 
     override fun onBackPressed() {
         moveTaskToBack(false)
     }
 
+
     override fun onMapClick(latLng: LatLng) {
         Toast.makeText(this, "Latitude: " + latLng.latitude.toString() + " longitude: " + latLng.longitude.toString(),
                 Toast.LENGTH_SHORT).show()
     }
+
+    override fun onMarkerClick(p0: Marker?) = false
 
     override fun onMapLongClick(latLng: LatLng) {
 
@@ -122,8 +143,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
 
     fun getMarker() {
 
-
-
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getReports()
         call.enqueue(object : Callback<List<ReportRequest>>{
@@ -133,11 +152,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                     var reports = response.body()
                     reports?.forEach{
                         val position = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
-                        val url = "http://intelligentcity.000webhostapp.com/myslim/report_photos/" + it.fotografia
-                        Picasso.get().load(url)
                          mMap.addMarker(
                                 MarkerOptions()
-                                        .position(position).title(it.titulo + " - " + it.data + " - " + it.fotografia)
+                                        .position(position).title(it.titulo + " - " + it.data)
                         )
                     }
 
@@ -154,5 +171,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
     }
 
 
+
 }
+
 
