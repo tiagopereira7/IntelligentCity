@@ -1,23 +1,36 @@
 package com.example.intelligentcity
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.intelligentcity.api.EndPoints
+import com.example.intelligentcity.api.ReportOutPutPost
+import com.example.intelligentcity.api.ReportRequest
+import com.example.intelligentcity.api.ServiceBuilder
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMapClickListener
-import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener
+import com.google.android.gms.maps.GoogleMap.*
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener{
+
+
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener {
 
     private lateinit var mMap: GoogleMap
     lateinit var id: String
@@ -31,7 +44,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         mapFragment.getMapAsync(this)
 
         id = intent.getStringExtra("id")
-        //Toast.makeText(this, "Email:" + email, Toast.LENGTH_SHORT).show()
+
     }
 
     /**
@@ -47,14 +60,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val home = LatLng(41.554329,-8.351042)
+        val home = LatLng(41.554329, -8.351042)
         mMap.addMarker(MarkerOptions().position(home).title("Marker in my home"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(home, 12F))
 
         googleMap.setOnMapClickListener(this)
         googleMap.setOnMapLongClickListener(this)
 
+
     }
+
 
     override fun onBackPressed() {
         moveTaskToBack(false)
@@ -99,5 +114,45 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         }
     }
 
+    override fun onResume() {
+
+        super.onResume()
+        getMarker()
+    }
+
+    fun getMarker() {
+
+
+
+        val request = ServiceBuilder.buildService(EndPoints::class.java)
+        val call = request.getReports()
+        call.enqueue(object : Callback<List<ReportRequest>>{
+
+            override fun onResponse(call: Call<List<ReportRequest>>, response: Response<List<ReportRequest>>) {
+                if (response.isSuccessful) {
+                    var reports = response.body()
+                    reports?.forEach{
+                        val position = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+                        val url = "http://intelligentcity.000webhostapp.com/myslim/report_photos/" + it.fotografia
+                        Picasso.get().load(url)
+                         mMap.addMarker(
+                                MarkerOptions()
+                                        .position(position).title(it.titulo + " - " + it.data + " - " + Picasso.get().load(url))
+                        )
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<List<ReportRequest>>, t: Throwable) {
+                Toast.makeText(this@MapActivity, getString(R.string.report_erro), Toast.LENGTH_SHORT).show()
+                Log.d("XXX", t.toString())
+            }
+        })
+
+
+    }
+
 
 }
+

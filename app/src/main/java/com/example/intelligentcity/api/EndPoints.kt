@@ -24,7 +24,7 @@ interface EndPoints {
 
     ) : Call<ReportOutPutPost>
 
-    @GET("api/reports_detalhe")
+    @GET("api/reports")
     fun getReports(): Call<List<ReportRequest>>
 
 }

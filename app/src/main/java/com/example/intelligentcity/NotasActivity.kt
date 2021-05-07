@@ -184,6 +184,7 @@ class NotasActivity : AppCompatActivity() {
     fun backToMap(v: View?) {
         val i = Intent(this@NotasActivity, MapActivity::class.java)
         startActivity(i)
+
     }
 
 
