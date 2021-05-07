@@ -137,7 +137,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                         Picasso.get().load(url)
                          mMap.addMarker(
                                 MarkerOptions()
-                                        .position(position).title(it.titulo + " - " + it.data + " - " + Picasso.get().load(url))
+                                        .position(position).title(it.titulo + " - " + it.data + " - " + it.fotografia)
                         )
                     }
 
