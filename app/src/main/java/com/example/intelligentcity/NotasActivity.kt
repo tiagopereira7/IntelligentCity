@@ -37,7 +37,7 @@ class NotasActivity : AppCompatActivity() {
     private lateinit var editcoordenadas: EditText
     private lateinit var imageView: ImageView
     private lateinit var button_image: Button
-    private lateinit var id: String
+    private lateinit var id_user: String
 
     var latitude = "0"
     var longitude = "0"
@@ -53,7 +53,7 @@ class NotasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_notas)
 
         editcoordenadas = findViewById(R.id.editcoordenadas)
-        id = intent.getStringExtra("id")
+        id_user = intent.getStringExtra("id")
         latitude = intent.getStringExtra("latitude")
         longitude = intent.getStringExtra("longitude")
 
@@ -153,7 +153,7 @@ class NotasActivity : AppCompatActivity() {
             val imgFileRequest: RequestBody = RequestBody.create(MediaType.parse("image/*"), imageFile)
             val foto: MultipartBody.Part = MultipartBody.Part.createFormData("file", imageFile.name, imgFileRequest)
 
-            val utilizador_id: RequestBody = RequestBody.create(MediaType.parse("text/plain"), id)
+            val utilizador_id: RequestBody = RequestBody.create(MediaType.parse("text/plain"), id_user)
             val titulo: RequestBody = RequestBody.create(MediaType.parse("text/plain"), titulo.text.toString())
             val descricao: RequestBody = RequestBody.create(MediaType.parse("text/plain"), descricao.text.toString())
             val localizacao: RequestBody = RequestBody.create(MediaType.parse("text/plain"), localizacao.text.toString())
@@ -170,6 +170,8 @@ class NotasActivity : AppCompatActivity() {
                         finish()
                         intent.putExtra("id", response.body()?.utilizador_id)
                         intent.putExtra("id_report", response.body()?.id)
+                        Log.d("XX", "id")
+                        Log.d("XX", "id_report")
                     }
                 }
 

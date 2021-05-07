@@ -33,7 +33,7 @@
     <string name="erro_local">Tem de preencher a localizacao!</string>
     <string name="logout">Sessão terminada! Obrigado.</string>
     <string name="botao_logout">Sair</string>
-    <string name="other_user_report">OUTRO USER REPORT </string>
+    <string name="other_user_report">OUTRO REPORT </string>
     <string name="my_report">MEU REPORT</string>
     <string name="gravar_alteracao_dialog">Atualizar</string>
     <string name="apagar_dialog">Apagar</string>

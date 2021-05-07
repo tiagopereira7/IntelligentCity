@@ -29,4 +29,5 @@ interface EndPoints {
 
     @GET("/api/reports/{id}")
     fun getReportById(@Path("id") id:Int?): Call<ReportRequest>
+
 }

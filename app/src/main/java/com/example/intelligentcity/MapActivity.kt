@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.*
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -28,7 +29,7 @@ import retrofit2.Response
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener, OnMarkerClickListener {
 
     private lateinit var mMap: GoogleMap
-    lateinit var id: String
+    lateinit var id_user: String
     lateinit var myMarkers: MutableList<Marker>
     lateinit var otherMarkers: MutableList<Marker>
 
@@ -46,7 +47,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        id = intent.getStringExtra("id")
+        id_user = intent.getStringExtra("id")
 
 
     }
@@ -72,14 +73,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
             myMarkers.forEach{
                 if (marker.id == it.id){
                     val intent = Intent(this@MapActivity, MyReport::class.java)
-                    intent.putExtra("id_report", it.tag.toString())
+                    intent.putExtra("id", it.tag.toString())
                     startActivity(intent)
                 }
             }
             otherMarkers.forEach{
                 if (marker.id == it.id){
                     val intent = Intent(this@MapActivity, OthersReports::class.java)
-                    intent.putExtra("id_report", it.tag.toString())
+                    intent.putExtra("id", it.tag.toString())
                     startActivity(intent)
                 }
             }
@@ -111,7 +112,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
         val i = Intent(this@MapActivity, NotasActivity::class.java)
         i.putExtra("latitude", latLng.latitude.toString())
         i.putExtra("longitude", latLng.longitude.toString())
-        i.putExtra("id", id)
+        i.putExtra("id", id_user)
         startActivity(i)
     }
 
@@ -150,14 +151,31 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
             override fun onResponse(call: Call<List<ReportRequest>>, response: Response<List<ReportRequest>>) {
                 if (response.isSuccessful) {
                     var reports = response.body()
-                    reports?.forEach{
-                        val position = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
-                         mMap.addMarker(
-                                MarkerOptions()
-                                        .position(position).title(it.titulo + " - " + it.data)
-                        )
+                    reports?.forEach {
+                        if (it.utilizador_id == id_user) {
+                            val position = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+                            var marker: Marker
+                            marker = mMap.addMarker(
+                                    MarkerOptions()
+                                            .position(position)
+                                            .title(it.localizacao + " - " + it.data)
+                                            .title(it.titulo)
+                            )
+                            marker.tag = it.id
+                            myMarkers.add(marker)
+                        } else {
+                            val position = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+                            var marker: Marker
+                            marker = mMap.addMarker(
+                                    MarkerOptions()
+                                            .position(position)
+                                            .title(it.localizacao + " - " + it.data)
+                                            .title(it.titulo)
+                            )
+                            marker.tag = it.id
+                            otherMarkers.add(marker)
+                        }
                     }
-
                 }
             }
 
@@ -165,11 +183,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener,
                 Toast.makeText(this@MapActivity, getString(R.string.report_erro), Toast.LENGTH_SHORT).show()
                 Log.d("XXX", t.toString())
             }
-        })
-
-
-    }
-
+            })
+        }
 
 
 }

@@ -1,8 +1,8 @@
 package com.example.intelligentcity.api
 
 data class ReportRequest (
-        val id: Int,
-        val utilizador_id: Int,
+        val id: String,
+        val utilizador_id: String,
         val titulo: String,
         val descricao: String,
         val data: String,

@@ -14,15 +14,22 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+private var id : String? = null
+
 class OthersReports : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_others_reports)
+
+        id = intent.getStringExtra("id")
+        Log.d("xxx" , id)
+        getReport(id?.toInt())
     }
 
-    private fun getReport(id_report : Int?){
+    private fun getReport(id : Int?){
         val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.getReportById(id_report)
+        val call = request.getReportById(id)
 
         var report : ReportRequest? = null
 
@@ -31,14 +38,14 @@ class OthersReports : AppCompatActivity() {
             override fun onResponse(call: Call<ReportRequest>, response: Response<ReportRequest>) {
                 if (response.isSuccessful){
                     report=response.body()
-                    findViewById<EditText>(R.id.title_dialog).setText(report?.titulo)
-                    findViewById<EditText>(R.id.editdescricao).setText(report?.descricao)
-                    val imageView : ImageView = findViewById(R.id.photo_dialog)
+                    findViewById<EditText>(R.id.title_mydialog).setText(report?.titulo)
+                    findViewById<EditText>(R.id.edittext_mydialog).setText(report?.descricao)
+                    val imageView : ImageView = findViewById(R.id.photo_mydialog)
                     Log.d("xxx", report?.fotografia.toString())
                     val url = "http://intelligentcity.000webhostapp.com/myslim/report_photos/"+ report?.fotografia
                     Picasso.get().load(url).into(imageView)
-                    findViewById<EditText>(R.id.localizacao_dialog).setText(report?.localizacao)
-                    findViewById<EditText>(R.id.morada_dialog).setText(report?.latitude + report?.longitude)
+                    findViewById<EditText>(R.id.localizacao_mydialog).setText(report?.localizacao)
+                    findViewById<EditText>(R.id.morada_mydialog).setText(report?.latitude + report?.longitude)
                 }
             }
 

@@ -34,7 +34,7 @@
     <string name="erro_local">You must fill the location!</string>
     <string name="logout">Session ended! Thank you.</string>
     <string name="botao_logout">Logout</string>
-    <string name="other_user_report">OTHER USER REPORT</string>
+    <string name="other_user_report">OTHER REPORT</string>
     <string name="my_report">MY REPORT</string>
     <string name="gravar_alteracao_dialog">Update</string>
     <string name="apagar_dialog">Delete</string>
